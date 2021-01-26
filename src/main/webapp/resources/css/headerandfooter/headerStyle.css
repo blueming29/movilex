@@ -1,0 +1,165 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Noto Sans KR, sans-serif;
+}
+
+button:focus{
+	outline: none;
+}
+
+.fixed_header{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    background-color: #fff;
+    text-align: center;
+    width: 100%;
+    height: 62px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 0px 0px;
+/*    transition: background-color 200ms ease 0s;*/
+}
+
+.header_container{
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav_ul_header{
+
+    list-style: none;
+    display: flex;
+    overflow: hidden;
+}
+
+.nav_logo {
+    padding-top: 15px;
+}
+
+.nav_logo img{
+    width: 170px;
+    height: 36px;
+}
+
+.nav_search_box{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    margin-left: auto;
+}
+
+.search_container{
+    position: relative;
+    margin: 12px 0;
+}
+
+.input_box{
+    width: 300px;
+    display: inline-block;
+    padding: 6px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    /* focus 시 애니매이션 처리 */
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+/* 입력창 클릭시 효과 */
+.input_box:focus{
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    
+    /* shadow : x축 이동(오른쪽), y축 이동(아래쪽), z축 이동?(블러효과 낼수잇음), shadow 사이즈 */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+
+}
+
+/* 검색 버튼 */
+.search_btn{
+    position: relative;
+    height: 35px;
+    margin-left: -3px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #28a745;
+    border: 0;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.nav_btn {
+    display: flex;
+    margin-left: 10px;
+    max-height: 62px;
+}
+
+/* 로그인 버튼, 평가 */
+.login_btn, .rec_btn {
+    cursor: pointer;
+    background: transparent;
+    color: #007bff;
+    font-size: 14px;
+    border: 0px;
+    margin: 15px 0px;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+/* 회원가입 버튼 */
+.join_btn{
+    cursor: pointer;
+    background: transparent;
+    color: #28a745;
+    font-size: 14px;
+    border: 0px;
+    margin: 15px 0px;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.user_btn{
+    cursor: pointer;
+    background: transparent;
+    color: #cccccc;
+    font-size: 30px;
+    border: 0px;
+    margin: 8px 0px;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+/* 각 button에 대한 hover 이벤트 처리 */
+.search_btn:hover, .join_btn:hover{
+    color: #fff;
+    background-color: #28a745;
+}
+
+.login_btn:hover, .rec_btn:hover{
+    color: #fff;
+    background-color: #007bff;
+}
+
+.user_btn i:hover, .user_btn svg:hover{
+	color: #28a745;
+}
+
+/* 로고빼고 나머지 안보이게 하기 */
+.nav_ul_header li:not(:first-child){
+    display: none;
+}
+
+/* 반응형 구조잡기 */
+@media (min-width: 768px){
+    .nav_ul_header li:not(:first-child){
+        display: flex;
+    }
+}

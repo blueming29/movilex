@@ -1,0 +1,173 @@
+body{
+	background-color: #fafafa;
+}
+
+a {
+	color: #0c0c0c;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+a:hover{
+	color: #0c0c0c;
+	text-decoration: none;	
+}
+
+p{
+	margin:0;
+}
+
+ul.boxoffice_slider{
+	list-style: none;
+}
+
+div {
+	display: block;
+}
+
+.mainListContainer {
+	position: relative;
+	margin-bottom: 30px;
+	padding: 0 20px;
+}
+
+.mainListTitleRow {
+	position: relative;
+	max-width: 1320px;
+	padding: 12px 0 14px;
+	margin: 0 auto;
+}
+
+.mainListTitle {
+	position: relative;
+	color: #0c0c0c;
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: -0.4px;
+	line-height: 30px;
+}
+
+.slideWrap {
+	position: relative;
+	max-width: 1320px;
+	margin: 0 auto;
+}
+
+.bx-prev, .bx-next {
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-size: 30%;
+	top: 40%;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #fff;
+	text-indent: -9999px;
+	box-shadow: 0 1px 3px 0;
+}
+
+.bx-prev {
+	right: 99%;
+	background-image: url("../image/angle-left-solid.svg");
+}
+
+.bx-next {
+	left: 98%;
+	background-image: url("../image/angle-right-solid.svg");
+}
+
+.bx-prev.disabled, .bx-next.disabled {
+    display: none !important;
+}
+
+.bx-prev:hover, .bx-next:hover {
+	background-color: #eee;
+}
+
+.movie_img_container{
+	position: relative;
+}
+
+.movie_img {
+	width: 100%;
+	height: auto;
+	border-radius: 4px;
+}
+
+.ranking_badge {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	background-color: black;
+	color: white;
+	font-weight: 700;
+	letter-spacing: normal;
+	font-size: 18px;
+	line-height: 27px;
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 4px;
+	opacity: 0.8;
+}
+
+.movie_detail {
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+
+p.main_title {
+	padding: 5px 0;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+p.spec {
+	font-size: 0.9em;
+}
+
+p.spec_point {
+	font-size: 0.9em;
+	color: #28a745;
+}
+
+p.spec_eval_point{
+	font-size: 0.9em;
+	color: #007bff;
+	
+}
+
+@media screen and (max-width: 768px) {
+	.bx-prev {
+	right: 95%;
+}
+
+	.bx-next {
+	left: 95%;
+}
+	
+	.on_display {
+		display: none;
+	}
+	.mainListContainer {
+		padding: 0;
+		margin-left: 2%;
+		margin-right: 2%;
+		margin-bottom: 20px;
+	}
+	
+	.mainListContainer:last-child{
+		margin-bottom: 70px;
+	}
+}
+
+@media screen and (max-width: 560px) {
+	.mainListContainer {
+		margin-left: 1%;
+		margin-right: 1%;
+		margin-bottom: 0;
+	}
+}

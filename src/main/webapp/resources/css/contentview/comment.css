@@ -1,0 +1,74 @@
+body {margin: 0px; }
+
+
+/* 코멘트 상단_닫기버튼, 영화제목 */
+.comment_header{ width: 100%; height: 70px; }
+
+/* 닫기버튼 */
+.comment_close_button  {
+	background: none;
+	border: 0px;
+	margin: 15px;
+	float: left;
+}
+
+/* 닫기버튼_글씨 */
+.comment_close {
+	text-decoration: none;
+    font-size: 24px;
+    font-weight: bolder;
+    color: #007bff;
+    cursor: pointer;
+}
+
+/* 영화제목 */
+.comment_movie_title {
+	min-height: 40px;
+	margin: 10px 13px 15px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+	
+	text-align: center;
+    padding: 1px;
+}
+
+/* 영화제목_글자 */
+.comment_movie_title h2{
+}
+
+
+
+/* 코멘트 작성란_내용입력 */
+.comment_body{ width: 100%; }
+
+.save_button {
+	position: relative;	
+}
+
+/* 코멘트작성 버튼 */
+.comment_save_button  {
+	margin-right: 30px;
+	float: right;
+	font-weight: normal;
+	padding: 10px 5px ;
+	background: none;
+	font-size: 20px;
+	color: #ccc;
+	border: 0;
+	cursor: pointer;
+}
+
+/* 코멘트 작성창1 */
+.comment_content_textarea { margin: 20px 15px 0px; border-top: 1px solid #ccc; }
+
+/* 코멘트 작성창 */
+.comment_content { width: 100%; height: 500px;     font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.7px;
+    line-height: 26px;
+    border: 0px;
+    outline: none;
+    margin: 1px 0px;
+    resize: none;
+    overflow: auto;
+    font-family: inherit; }

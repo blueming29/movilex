@@ -1,0 +1,449 @@
+.eval_grid, .like_grid {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+.eval_container, .like_container {
+	margin: 0;
+}
+
+.round_corner {
+	width: auto;
+	padding: 0 16px;
+	border: 0;
+	border-radius: 0;
+	background: #fff;
+}
+
+.eval_fixed_header, .like_fixed_header {
+	position: fixed;
+	z-index: 1050;
+	width: 100%;
+	background-color: white;
+	margin-left: -15px;
+}
+
+.eval_header, .like_header {
+	position: relative;
+	width: 100%;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom: 1px solid #d2d2d2;
+}
+
+.header_bar {
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+
+.prev_btn {
+	padding: 0px;
+	border: none;
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	margin: 10px 10px;
+	background-size: 15px;
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image:
+		url(../../image/informImg/thinarrowpointingleft_87489.png);
+}
+
+.eval_title {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	white-space: nowrap;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 800;
+	letter-spacing: -0.7px;
+	margin: 11px 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tabs_ul {
+	list-style: none;
+	margin: 0px;
+	display: flex;
+	align-items: flex-end;
+	box-sizing: border-box;
+	width: 100%;
+	height: 48px;
+}
+
+.tabs_li_all, .tabs_li_point {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	color: rgb(120, 120, 120);
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 20px;
+	min-width: 48px;
+	height: 44px;
+	padding: 0px 0px 3px;
+	cursor: pointer;
+	box-sizing: border-box;
+	width: 50%;
+}
+
+.selected {
+	color: #425a79;
+	font-weight: 600;
+}
+
+/* 밑줄 애니메이션 효과*/
+.border_slide {
+	position: absolute;
+	display: block;
+	top: 95%;
+	margin: 0 auto;
+	height: 3px;
+	background-color: #425a79;
+	width: 0%;
+	transition: width 0.3s;
+}
+
+.border_slide.all {
+	width: 100%;
+	right: 0;
+}
+
+.border_slide.point {
+	left: 0;
+}
+
+.tab_contents_container {
+	padding-top: 140px;
+}
+
+.nontab_contents_container {
+	padding-top: 100px;
+}
+
+/* selectBox */
+#like_form_fixed_selectbox {
+	top: 46px;
+}
+
+.fixed_selectbox {
+	position: fixed;
+	z-index: 1050;
+	width: 100%;
+	top: 94px;
+	background-color: white;
+	margin-left: -15px;
+	padding-left: 15px;
+}
+
+.selectbox {
+	margin: 10px 0;
+}
+
+.dropdown{
+	display: inline-block;
+}
+
+.dropdown dd {
+	position: relative;
+}
+
+.dropdown span {
+	font-size: 12px;
+	color: rgb(66, 90, 121);
+}
+
+.dropdown dt span {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: 90%;
+	background-image: url('../../image/informImg/caret-down-solid.svg');
+	background-size: 10px;
+	line-height: 29px;
+	display: block;
+	padding-left: 10px;
+	padding-right: 20px;
+	border: 1px solid rgb(66, 90, 121);
+	width: 70px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.dropdown_list {
+	display: none;
+	z-index: 1000;
+	border: 1px solid rgb(66, 90, 121);
+	background-color: #fff;
+	color: rgb(66, 90, 121);
+	left: 0px;
+	position: absolute;
+	top: -1px;
+	padding: 5px 0;
+	min-width: 100px;
+	list-style: none;
+	text-align: left;
+}
+
+.dropdown_list span {
+	padding: 5px;
+	display: block;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+.dropdown_list span:hover {
+	background-color: #425a79;
+	color: #fff;
+}
+
+/* 전체 탭*/
+.movie_section:not(:first-child ){
+	border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+#num0 {
+	display: block;
+}
+
+.movie_section{
+	padding-bottom: 62px;
+}
+
+.movie_section_toggle {
+	display: none;
+}
+
+.movie_items_ul {
+	list-style: none;
+	padding: 0px;
+	margin: 14px -8px 0;
+	overflow: hidden;
+}
+
+.movie_item_li {
+	display: inline-block;
+	vertical-align: top;
+	box-sizing: border-box;
+	width: 13.8%;
+	padding: 0px 2px;
+	margin: 0px 0px 24px;
+}
+
+.movie_item_li a {
+	display: inline-block;
+	text-decoration: none;
+	width: 100%;
+}
+
+.movie_poster {
+	position: relative;
+	width: 100%;
+	height: 0px;
+	padding-bottom: 150%
+}
+
+.poster_img_section {
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	border: 1px solid rgb(234, 233, 232);
+	border-radius: 5px;
+	background: rgb(248, 248, 248);
+	transition: all 300ms ease 0s;
+}
+
+.poster_img {
+	vertical-align: top;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	object-fit: cover;
+	transition: opacity 420ms ease 0s;
+}
+
+.movie_info {
+	text-align: left;
+	width: calc(100% - 10px);
+	margin: 5px 10px 0px 0px;
+}
+
+.movie_title {
+	color: rgb(41, 42, 50);
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: -0.3px;
+	line-height: 22px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.movie_eval {
+	color: #007bff;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: -0.2px;
+	line-height: 18px;
+	white-space: nowrap;
+	height: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.movie_non_eval {
+	color: #28a745;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: -0.2px;
+	line-height: 18px;
+	white-space: nowrap;
+	height: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* 별점 순 탭 */
+.hide_block_point {
+	display: none;
+}
+
+.point_movie_section {
+	padding: 8px 0px 85px;
+}
+
+.title_area {
+	position: relative;
+	cursor: pointer;
+}
+
+.title_area:hover{
+	margin: 0 -6px;
+	background-color: #f8f8f8;
+	border-radius: 6px;
+	}
+
+
+.section_title {
+	float: left;
+	color: #000;
+	font-size: 19px;
+	font-weight: 700;
+	-webkit-letter-spacing: -0.7px;
+	-moz-letter-spacing: -0.7px;
+	-ms-letter-spacing: -0.7px;
+	letter-spacing: -0.7px;
+	line-height: 28px;
+	margin: 8px 0;
+}
+
+.section_title_counter {
+	display: inline-block;
+	color: #a0a0a0;
+	font-size: 15px;
+	font-weight: 400;
+	margin: 12px 0 12px 6px;
+}
+
+/*.open_more*/
+.open_more {
+	margin: 10px 0;
+	cursor: pointer;
+	float: right;
+	width: 25px;
+	height: 25px;
+	border: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-image: url(../../image/informImg/caret-down-solid.svg);
+}
+
+/* 반응형 이미지 조절*/
+/* 6개씩 */
+@media ( max-width : 900px) {
+	.movie_item_li {
+		width: 16%;
+	}
+}
+
+/* 5개씩 */
+@media ( max-width : 768px) {
+	.movie_item_li {
+		width: 19.5%;
+	}
+	.fixed_header{
+		display: none;
+	}
+}
+
+/* 4개씩 */
+@media ( max-width : 610px) {
+	.movie_item_li {
+		width: 24%;
+	}
+}
+
+/* 3개씩 */
+@media ( max-width : 480px) {
+	.movie_item_li {
+		width: 32%
+	}
+}
+
+@media screen and (min-width :768px) {
+	.eval_wrap, .like_wrap {
+		padding-top: 62px;
+	}
+	.eval_container, .like_container {
+		min-height: calc(100vh - 300px);
+		padding: 30px 0;
+		background: #f8f8f8;
+	}
+	.round_corner {
+		border: 1px solid #ccc;
+		border-radius: 6px;
+		-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+		box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+	}
+	.prev_btn {
+		margin: 10px 0;
+	}
+	.tabs_ul {
+		width: 335px;
+	}
+	.eval_fixed_header, .like_fixed_header {
+		position: relative;
+		width: auto;
+		margin-left: 0px;
+	}
+	#like_form_fixed_selectbox {
+		top: auto;
+	}
+	.fixed_selectbox {
+		position: relative;
+		width: auto;
+		margin-left: 0;
+		padding-left: 0;
+		top: auto;
+	}
+	.tab_contents_container, .nontab_contents_container {
+		padding-top: 0px;
+	}
+	
+	.movie_section{
+		padding-bottom: 0;
+	}
+	
+}

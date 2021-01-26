@@ -1,0 +1,912 @@
+.info_wrap{
+	margin-bottom: 58px;
+    padding: 0;
+    
+}
+
+.info_container{
+    background: #f8f8f8;
+    margin: 0;
+    min-height: calc(100vh - 62px);
+}
+
+.info_grid{
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.info_grid_toggle{
+	margin-top: 10px;
+	display: none;
+}
+
+.round_corner{
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+}
+.wall_paper{
+
+    position: relative;
+}
+
+.wall_paper img{
+
+    width: 100%;
+    max-height: 250px;
+}
+
+.wall_paper::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    background-image: linear-gradient(-180deg, rgba(66, 90, 121, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    height: 250px;
+}
+
+.setting-button{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+}
+
+.setting-button i, .setting-button svg{
+	font-size: 25px;
+	color: #ffffff;
+	transition: all ease 1s;
+}
+
+.setting-button i:hover, .setting-button svg:hover{
+	color: #ccc;
+	transform: rotate( 90deg );
+}
+
+.logo_img{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 180px;
+    height: 30px;
+}
+    
+.user_info_header{
+    padding: 30px 0;
+    margin: 0 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}   
+
+.user_info{
+    display: flex;
+}
+
+.user_info_list{
+    display: block;
+}
+
+.user_info_list:not(:last-child){
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.round_user_img{
+    text-indent: 10px;
+    padding-top: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    position: relative;
+    align-items: center;
+    width: 60px;
+    height: 53px;
+    overflow: hidden;
+}
+
+.round_user_img img{
+    width: 40px;
+    height: 45px;
+}
+
+.user_name{
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 30px;
+    line-height: 60px;
+    letter-spacing: -0.8px;
+}
+
+.user_info_body{
+    padding: 0;
+    margin: 0 20px;
+}
+
+.info_title{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 60px;
+}
+
+.total_count{
+    font-size: 17px;
+    font-weight: normal;
+    color: #ccc;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.info_spread {
+    margin: 20px 0;
+    float: right;
+}
+
+.info_spread a {
+    color: #007bff;
+}
+
+p.movie_title {
+	padding: 0;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+p.movie_eval_star_point{
+	font-size: 0.7em;
+	color: #007bff;
+}
+
+p.movie_star_point {
+	font-size: 0.7em;
+	color: #28a745;
+}
+
+.setting-list{
+    display: block;
+    border-bottom: 1px solid #e5e5e5;
+    margin: 20px 0 10px 0;
+    min-height: 40px;
+    line-height: 35px;
+}
+
+.setting-list a{
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.7px;
+    color: black;
+}
+
+#logout_popup, #withdrawal_popup{
+	font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.7px;
+    color: black;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.setting-list-section:not(:first-child){
+    margin-top: 50px;
+}
+
+.setting-list-title {
+    color: rgb(140, 140, 140);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.7px;
+    line-height: 19px;
+}
+
+
+/* 수정할 부분 */
+
+/* .info_grid.fold{ display: none;} */
+
+#open_more{
+	margin: 20px 0;
+    cursor: pointer;
+    float: right;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../../image/informImg/caret-down-solid.svg);
+}
+
+
+.graph_container {
+	position: relative;	
+}
+
+.graph_container canvas{
+	width: 400px;
+	margin: 0 auto;
+}
+
+.point_distribution {
+    padding: 25px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.point_distribution_ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.point_distribution_li{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    box-sizing: border-box;
+    width: 33.33333333333333%;
+}
+
+.point_distribution_li span{
+    display: block;
+}
+
+.point_distribution_title{
+    font-size: 1.1em;
+    font-weight: 800;
+}
+
+.point_distribution_subtitle{
+    color: #787878;
+    font-size: 0.9em;
+    font-weight: 500;
+    
+}
+
+/* 배우 */
+.preper_actor {
+    padding: 25px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.preper_actor_toprank_ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.preper_actor_toprank_li{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    box-sizing: border-box;
+    width: 33.333333%;
+}
+
+.preper_actor_toprank_li span{
+    display: block;
+}
+
+.preper_actor_title{
+    font-size: 1.1em;
+    font-weight: 800;
+}
+
+.preper_actor_subtitle{
+    color: #787878;
+    font-size: 0.9em;
+    font-weight: 500;
+    
+}
+
+.preper_actor_ul {
+    display: block;
+    list-style: none;
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.preper_actor_li{
+    color: #787878;
+    padding: 10px 0;
+}
+
+.preper_actor_li .preper_actor_subtitle {
+    float: right;
+}
+
+
+/* 감독 */
+.preper_director {
+    padding: 25px 0;
+/*    border-bottom: 1px solid #e5e5e5;*/
+}
+
+.preper_director_toprank_ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.preper_director_toprank_li{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    box-sizing: border-box;
+    width: 33.333333%;
+}
+
+.preper_director_toprank_li span{
+    display: block;
+}
+
+.preper_director_title{
+    font-size: 1.1em;
+    font-weight: 800;
+}
+
+.preper_director_subtitle{
+    color: #787878;
+    font-size: 0.9em;
+    font-weight: 500;
+    
+}
+
+.preper_director_ul {
+    display: block;
+    list-style: none;
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.preper_director_li{
+    color: #787878;
+    padding: 10px 0;
+}
+
+.preper_director_li .preper_director_subtitle {
+    float: right;
+}
+
+
+/* 국가 */
+.preper_nation {
+    padding: 25px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.preper_nation_toprank_ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.preper_nation_toprank_li{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    box-sizing: border-box;
+    width: 33.333333%;
+}
+
+.preper_nation_toprank_li span{
+    display: block;
+}
+
+.preper_nation_title{
+    font-size: 1.1em;
+    font-weight: 800;
+}
+
+.preper_nation_subtitle{
+    color: #787878;
+    font-size: 0.9em;
+    font-weight: 500;
+    
+}
+
+.preper_nation_ul {
+    display: block;
+    list-style: none;
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.preper_nation_li{
+    color: #787878;
+    padding: 10px 0;
+}
+
+.preper_nation_li .preper_nation_subtitle {
+    float: right;
+}
+
+
+/* 장르 */
+.preper_genre {
+    padding: 25px 0;
+/*    border-bottom: 1px solid #e5e5e5;*/
+}
+
+.preper_genre_toprank_ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.preper_genre_toprank_li{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    box-sizing: border-box;
+    width: 33.333333%;
+}
+
+.preper_genre_toprank_li span{
+    display: block;
+}
+
+.preper_genre_title{
+    font-size: 1.1em;
+    font-weight: 800;
+}
+
+.preper_genre_subtitle{
+    color: #787878;
+    font-size: 0.9em;
+    font-weight: 500;
+    
+}
+
+.preper_genre_ul {
+    display: block;
+    list-style: none;
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.preper_genre_li{
+    color: #787878;
+    padding: 10px 0;
+}
+
+.preper_genre_li .preper_genre_subtitle {
+    float: right;
+}
+
+
+/* bxSlider.css*/
+.slideWrap {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.bx-prev, .bx-next {
+    opacity: 0;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-size: 30%;
+	top: 32%;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #fff;
+	text-indent: -9999px;
+	box-shadow: 0 1px 3px 0;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+
+.bx-prev:hover, .bx-next:hover {
+	background-color: #eee;
+}
+
+.bx-prev {
+	left: 1px;
+	background-image: url("../../image/angle-left-solid.svg");
+}
+
+.bx-next {
+	right: 2px;
+	background-image: url("../../image/angle-right-solid.svg");
+}
+
+.bx-prev.disabled, .bx-next.disabled {
+    display: none !important;
+}
+
+.multipleWrap:hover .bx-prev, .multipleWrap:hover .bx-next {
+    opacity: 1;
+}
+
+.multiple_slider li img {
+    border-radius: 6px;
+    width: 100%;
+    height: auto;
+}
+
+ /*Modal*/ 
+
+
+.close_btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none
+}
+
+.myModal_close {
+	float: right;
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	filter: alpha(opacity = 20);
+	opacity: .2;
+	padding: 0;
+	cursor: pointer;
+	background: 0 0;
+	border: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none
+}
+
+.myModal_close:focus, .myModal_close:hover, .withdrawalModal_close:hover {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+	filter: alpha(opacity = 50);
+	opacity: .5
+}
+
+.myModal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 3000;
+	overflow: hidden;
+	outline: 0;
+
+}
+
+.myModal_overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.myModal_content {
+    border: 0;
+    height: 100%;
+	position: relative;
+	background-color: #fff;
+	background-clip: padding-box;
+	outline: 0
+}
+
+.myModal_header {
+	padding: 15px;
+	border-bottom: 1px solid #e5e5e5
+}
+
+.myModal_title{
+    padding: 20px 0 0 0;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    font-size: 22px;
+	margin: 0;
+	line-height: 1
+}
+
+.myModal_body {
+	position: relative;
+	padding: 15px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+
+}
+
+.myModal_footer {
+	padding: 15px;
+	text-align: right;
+	border-top: 1px solid #e5e5e5
+}
+
+.myModal_footer .close_btn {
+	margin-bottom: 0;
+	margin-left: 5px
+}
+
+.hidden {
+	display: none !important;
+}
+
+
+
+/* 로그아웃 팝업 */
+.logoutModal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 4000;
+	overflow: hidden;
+	outline: 0;
+
+}
+
+.logoutModal_overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.logoutModal_content {
+	width: 375px;
+	height: auto;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 6px;
+	position: relative;
+	background-color: #fff;
+	background-clip: padding-box;
+	outline: 0
+}
+
+.logoutModal_header {
+	padding: 15px;
+	border-bottom: 1px solid #e5e5e5
+}
+
+.logoutModal_title{
+	text-align: center;
+    padding: 20px 0;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    font-size: 22px;
+	margin: 0;
+	line-height: 1
+}
+
+.logoutModal_footer {
+	justify-content: space-between;
+	display: flex;
+	text-align: right;
+	border-top: 1px solid #e5e5e5
+}
+
+.logout_btn, .logout_close_btn{
+	color: #007bff;
+	position: relative;
+	width: 50%;
+	height: 50px;
+	background-color: transparent;
+	border: 0;
+	font-size: 15px;
+	font-weight: 800;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	cursor: pointer;
+}
+
+.logout_btn:hover, .logout_close_btn:hover{
+	background-color: #e5e5e5;
+}
+
+.logout_btn{
+	border-right: 2px solid #e5e5e5;
+}
+
+/* 회원탈퇴 팝업 */
+.withdrawalModal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 4000;
+	overflow: hidden;
+	outline: 0;
+
+}
+
+.withdrawalModal_overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.withdrawalModal_content {
+	width: 375px;
+	height: auto;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 6px;
+	position: relative;
+	background-color: #fff;
+	background-clip: padding-box;
+	outline: 0
+}
+
+.withdrawalModal_header {
+	padding: 15px;
+	border-bottom: 1px solid #e5e5e5
+}
+
+.withdrawalModal_title{
+	text-align: center;
+    padding: 20px 0;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    font-size: 22px;
+	margin: 0;
+	line-height: 1
+}
+
+.password_input_title{
+	text-align: center;
+    padding: 20px 0;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    font-size: 22px;
+	margin: 0;
+	line-height: 1
+}
+
+#password_check{
+	margin: 0 5%;
+	width: 90%;
+	height: 30px;
+	margin-bottom: 10px;
+}
+
+.error_msg{
+	color: #f50000;
+	font-weight: 500;
+	font-size: 16px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.withdrawalModal_footer {
+	justify-content: space-between;
+	display: flex;
+	text-align: right;
+	border-top: 1px solid #e5e5e5
+}
+
+.withdrawal_btn, .withdrawal_close_btn{
+	color: #007bff;
+	position: relative;
+	width: 50%;
+	height: 50px;
+	background-color: transparent;
+	border: 0;
+	font-size: 15px;
+	font-weight: 800;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	cursor: pointer;
+}
+
+.withdrawal_btn:hover, .withdrawal_close_btn:hover{
+	background-color: #e5e5e5;
+}
+
+.withdrawal_btn {
+	border-right: 2px solid #e5e5e5;
+}
+
+.withdrawalModal_close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	filter: alpha(opacity = 20);
+	opacity: .2;
+	padding: 10px;
+	cursor: pointer;
+	background: 0 0;
+	border: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px){	
+	.fixed_header{
+		display: none;
+	}
+}
+
+@media screen and (min-width :768px) {
+	.info_wrap{
+		margin-top: 62px;
+		margin-bottom: 0;
+	}
+    .info_container{
+        padding: 30px 0;
+    }
+    
+    .round_corner{
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    
+    .wall_paper::before {
+        border-radius: 6px;
+    }
+    
+    .myModal{
+    	display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+	.myModal_content {
+        width: 375px;
+        height: auto;
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: 6px;
+	}
+
+}

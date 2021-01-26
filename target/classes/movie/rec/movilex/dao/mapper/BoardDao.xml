@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="movie.rec.movilex.dao.BoardDao">
+	
+	<!-- 공지사항 -->
+	<select id="get_noticeview" resultType="movie.rec.movilex.dto.NoticeBoardDto">
+		SELECT BOARD_SEQ,USER_ID,
+		BOARD_TITLE, BOARD_CONTENT, BOARD_DATE
+		FROM NOTICE_BOARD ORDER BY
+		BOARD_DATE DESC
+	</select>
+	<!-- 공지사항 입력 -->
+	<insert id="write_notice">
+		INSERT INTO
+		NOTICE_BOARD(BOARD_SEQ,USER_ID,BOARD_TITLE, BOARD_CONTENT, BOARD_DATE)
+		VALUES(BOARD_SEQ_VAL.NEXTVAL,'admin', #{param1}, #{param2}, SYSDATE)
+		<!-- 나중에 admin 수정하기 -->
+	</insert>
+	<!-- 공지사항 수정화면 가져오기 -->
+	<select id="modify_get_notice" resultType="movie.rec.movilex.dto.NoticeBoardDto">
+		SELECT
+		BOARD_SEQ,USER_ID, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE
+		FROM
+		NOTICE_BOARD WHERE BOARD_SEQ=#{param1}
+	</select>
+	<!-- 공지사항 수정 -->
+	<update id="modify_notice">
+		UPDATE NOTICE_BOARD
+		SET
+		BOARD_TITLE=#{param2},BOARD_CONTENT=#{param3}
+		WHERE BOARD_SEQ=#{param1}
+	</update>
+	<!-- 공지사항 삭제 -->
+	<delete id="delete_notice">
+		DELETE FROM NOTICE_BOARD WHERE BOARD_SEQ=#{param1}
+	</delete>
+
+
+	<!-- QnA -->
+<!-- Qnaview 동작.-->
+	<select id="get_qnaview" resultType="movie.rec.movilex.dto.QnaBoardDto">
+		SELECT
+		QNA_SEQ,USER_ID,QNA_TITLE,QNA_CONTENT,
+		QNA_DATE,QNA_GROUP,QNA_STEP, QNA_INDENT FROM QNA_BOARD
+		ORDER BY QNA_GROUP DESC,QNA_STEP ASC
+	</select>
+
+
+	<!--Qna입력  -->
+	<insert id="write_qna">
+		INSERT INTO QNA_BOARD (QNA_SEQ,USER_ID,QNA_TITLE,QNA_CONTENT,
+		QNA_DATE,QNA_GROUP,QNA_STEP, QNA_INDENT)
+		VALUES(QNA_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3},
+		SYSDATE,QNA_SEQ.CURRVAL,0,0)
+	</insert>
+
+
+
+	<!-- Qna 답변 -->
+	<select id="reply_get_qna" resultType="movie.rec.movilex.dto.QnaBoardDto">
+		SELECT QNA_SEQ,USER_ID,QNA_TITLE,QNA_CONTENT,
+		QNA_DATE,QNA_GROUP,QNA_STEP, QNA_INDENT
+		FROM QNA_BOARD WHERE
+		QNA_SEQ=#{param1}
+	</select>
+	 
+	 <insert id="reply_qna">
+		INSERT INTO
+		QNA_BOARD(QNA_SEQ,USER_ID,QNA_TITLE,QNA_CONTENT,
+		QNA_DATE,QNA_GROUP,QNA_STEP,QNA_INDENT) VALUES(QNA_SEQ.NEXTVAL,
+		#{param1},#{param2},#{param3},SYSDATE,#{param4},#{param5}+1,#{param6}+1)
+	</insert> 
+	
+	<!-- Qna수정 -->
+
+	<select id="modify_get_qna" resultType="movie.rec.movilex.dto.QnaBoardDto">
+		SELECT QNA_SEQ,USER_ID,QNA_TITLE,QNA_CONTENT,
+		QNA_DATE,QNA_GROUP,QNA_STEP, QNA_INDENT
+		FROM QNA_BOARD WHERE
+		QNA_SEQ=#{param1}
+	</select>
+	
+	<update id="modify_qna">
+		UPDATE QNA_BOARD
+		SET
+		QNA_TITLE=#{param2},QNA_CONTENT=#{param3}
+		WHERE QNA_SEQ=#{param1}
+	</update>
+
+
+	<!-- Qna삭제  -->
+	<delete id="delete_qna">
+		DELETE FROM QNA_BOARD WHERE QNA_SEQ=#{param1}
+	</delete>
+
+</mapper>

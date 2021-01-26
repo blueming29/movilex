@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="movie.rec.movilex.dao.MovieDao">
+<!-- 메인 페이지 -->
+	<!-- 박스오피스 -->
+	<select id="get_boxoffice" resultType="movie.rec.movilex.dto.MainPageDto">
+		<!-- SELECT * FROM MOVIE_LIST WHERE MOVIE_CODE = #{param1} -->
+		SELECT ML.MOVIE_CODE, ML.MOVIE_IMG, ML.MOVIE_TITLE, ML.MOVIE_RELEASEDATE, ML.MOVIE_NATION, ML.MOVIE_POINT, EM.EVAL_POINT
+		FROM (SELECT * FROM MOVIE_LIST WHERE MOVIE_CODE = #{param2}) ML
+		LEFT OUTER JOIN EVAL_MOVIE EM
+		ON ML.MOVIE_CODE = EM.MOVIE_CODE
+		AND EM.USER_ID = #{param1}
+	</select>
+	
+	<!-- 평점순 -->
+	<select id="get_starPoint" resultType="movie.rec.movilex.dto.MainPageDto">
+		 <![CDATA[
+			SELECT ML.MOVIE_CODE, ML.MOVIE_IMG, ML.MOVIE_TITLE, ML.MOVIE_RELEASEDATE, ML.MOVIE_NATION, ML.MOVIE_POINT, EM.EVAL_POINT
+			FROM (SELECT * FROM MOVIE_LIST WHERE ROWNUM <= 30 ORDER BY MOVIE_POINT DESC) ML
+			LEFT OUTER JOIN EVAL_MOVIE EM
+			ON ML.MOVIE_CODE = EM.MOVIE_CODE
+			AND EM.USER_ID = #{param1}
+		 ]]>
+	</select>
+	
+	
+	
+	
+<!-- contentview 페이지 -->	
+	<!-- contentview 연결 -->
+	<select id="get_contentview" resultType="movie.rec.movilex.dto.MovieDto">
+		SELECT * FROM MOVIE_LIST WHERE MOVIE_CODE=#{param1}
+	</select>
+	
+	<!-- 스틸컷 이미지 -->
+	<select id="get_contentviewImg" resultType="movie.rec.movilex.dto.MovieImgDto">
+		SELECT * FROM MOVIE_IMGS WHERE MOVIE_CODE=#{param1}
+	</select> 
+	
+	<!-- 코멘트 가져오기 -->
+	<select id="get_comment" resultType="movie.rec.movilex.dto.MovieCommentDto">
+		SELECT * FROM MOVIE_COMMENT	WHERE MOVIE_CODE=#{param1} ORDER BY COMMENT_SEQ DESC
+	</select>
+	
+	<!-- 코멘트 입력 -->
+	<insert id="write_comment">
+		INSERT INTO MOVIE_COMMENT VALUES(COMMENT_SEQ.NEXTVAL,#{param1},#{param2},#{param3},#{param4},0)
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+<!-- 평가 페이지 -->	
+	<!-- 평가리스트 -->
+	<select id="get_eval_list"  resultType="movie.rec.movilex.dto.EvalMovieDto">
+		SELECT EM.EVAL_SEQ, EM.USER_ID, EM.MOVIE_CODE, EM.EVAL_POINT, ML.MOVIE_IMG, ML.MOVIE_TITLE
+		FROM EVAL_MOVIE EM 
+		JOIN MOVIE_LIST ML 
+		ON EM.MOVIE_CODE = ML.MOVIE_CODE
+		WHERE USER_ID = #{param1}
+		ORDER BY 
+		<choose>
+		<!-- 전체 탭 -->
+			<!-- 담은 순 -->
+			<when test="param2 == 0">
+				EVAL_SEQ DESC
+			</when>
+			<!-- 평점 순 -->
+			<when test="param2 == 1">
+				MOVIE_POINT DESC
+			</when>
+			<!-- 가나다 순 -->
+			<when test="param2 == 2">
+				MOVIE_TITLE
+			</when>
+			<!-- 개봉일 순 -->
+			<when test="param2 == 3">
+				MOVIE_RELEASEDATE DESC			
+			</when>
+			
+		<!-- 별점 순 탭 -->
+			<otherwise>
+				EVAL_POINT DESC	
+			</otherwise>
+		</choose>
+	</select>
+	
+	
+	
+<!-- 좋아요 페이지 -->	
+	<!-- 좋아요리스트 -->
+	<select id="get_like_list" resultType="movie.rec.movilex.dto.LikeMovieDto">
+		SELECT LM.LIKE_SEQ, LM.USER_ID, LM.MOVIE_CODE, ML.MOVIE_IMG, ML.MOVIE_TITLE, ML.MOVIE_POINT, EM.EVAL_POINT
+		FROM LIKE_MOVIE LM
+		LEFT OUTER JOIN MOVIE_LIST ML
+		ON LM.MOVIE_CODE = ML.MOVIE_CODE
+		LEFT OUTER JOIN EVAL_MOVIE EM
+		ON LM.MOVIE_CODE = EM.MOVIE_CODE AND LM.USER_ID = EM.USER_ID
+		WHERE LM.USER_ID = #{param1}
+		ORDER BY 
+		<choose>
+			<!-- 담은 순 -->	
+			<when test="param2 == 0">
+				LIKE_SEQ DESC
+			</when>
+			<!-- 평점 순 -->	
+			<when test="param2 == 1">
+				MOVIE_POINT DESC
+			</when>
+			<!-- 가나다 순 -->	
+			<when test="param2 == 2">
+				MOVIE_TITLE
+			</when>
+			<!-- 신작 순 -->	
+			<when test="param2 == 3">
+				MOVIE_RELEASEDATE DESC
+			</when>
+			<!-- 구작 순 -->	
+			<otherwise>
+				MOVIE_RELEASEDATE
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="get_searchs_list" resultType="movie.rec.movilex.dto.MovieDto">
+			SELECT * FROM MOVIE_LIST 
+			WHERE REPLACE ((MOVIE_TITLE || MOVIE_ACTOR || MOVIE_DIRECTOR), ' ', '') 
+			LIKE '%' || REPLACE (#{param1}, ' ', '' ) || '%'
+			ORDER BY MOVIE_RELEASEDATE DESC
+	</select>
+	
+	<select id="get_searchs_list2" resultType="movie.rec.movilex.dto.MovieDto">
+			SELECT * FROM MOVIE_LIST 
+			WHERE REPLACE ((MOVIE_TITLE || MOVIE_ACTOR || MOVIE_DIRECTOR), ' ', '') 
+			LIKE '%' || REPLACE (#{param1}, ' ', '' ) || '%'
+			OR REPLACE ((MOVIE_TITLE || MOVIE_ACTOR || MOVIE_DIRECTOR), ' ', '') 
+			LIKE '%' || REPLACE (#{param2}, ' ', '' ) || '%'
+			ORDER BY MOVIE_RELEASEDATE DESC
+	</select>
+	
+
+	
+<!-- movie_point DB입력 -->
+	<delete id="eval_point_delete">
+		DELETE FROM EVAL_MOVIE WHERE USER_ID = #{param1} AND MOVIE_CODE = #{param2}
+	</delete>
+	<insert id="eval_point_insert">
+		INSERT INTO EVAL_MOVIE VALUES(EVAL_SEQ_VAL.NEXTVAL, #{param1}, #{param2}, #{param3})
+	</insert>
+	<update id="eval_point_update">
+		UPDATE EVAL_MOVIE SET EVAL_POINT = #{param3} WHERE USER_ID=#{param1} AND MOVIE_CODE=#{param2}
+	</update>
+
+
+
+
+
+
+	<select id="get_eval_point_count" resultType="Integer">
+		SELECT EVAL_POINT FROM EVAL_MOVIE WHERE USER_ID = #{param1} AND MOVIE_CODE = #{param2}
+	</select>
+	
+	
+	
+	
+<!-- 보고싶어요 추가 -->
+	<insert id="like_insert">
+		INSERT INTO LIKE_MOVIE VALUES(LIKE_SEQ_VAL.NEXTVAL, #{param1}, #{param2})
+	</insert>
+	
+<!-- 보고싶어요 삭제 -->
+	<delete id="like_delete">
+		DELETE FROM LIKE_MOVIE WHERE USER_ID = #{param1} AND MOVIE_CODE = #{param2}
+	</delete>
+	
+<!-- 보고싶어요 체크 확인 -->
+	<select id="get_like_count" resultType="int">
+		SELECT COUNT(*) FROM LIKE_MOVIE WHERE USER_ID = #{param1} AND MOVIE_CODE = #{param2}
+	</select>
+	
+	
+<!-- 평가 했는지 알아보기 -->	
+	<select id="get_comment_exist" resultType="int">
+		SELECT COUNT(*) FROM MOVIE_COMMENT WHERE MOVIE_CODE = #{param2} AND USER_ID = #{param1}
+	</select>
+	
+	
+	
+<!-- 좋아요 체크 -->	
+	<select id="get_comment_like_search" resultType="String">
+		SELECT COUNT(*) FROM COMMENT_LIKE WHERE COMMENT_SEQ = #{param1} AND USER_ID = #{param2}
+	</select>
+	
+	<insert id="comment_like_insert">
+		INSERT INTO COMMENT_LIKE VALUES(#{param1}, #{param2}, 1)
+	</insert>
+	
+	<delete id="comment_like_delete">
+		DELETE FROM COMMENT_LIKE WHERE  COMMENT_SEQ = #{param1} AND USER_ID = #{param2}
+	</delete>
+	
+<!-- 코멘트에 달린 좋아요 갯수 수정  -->	
+	<update id="comment_like_update" >
+		UPDATE MOVIE_COMMENT SET COMMENT_LIKE = COMMENT_LIKE
+		<choose>
+			<when test="param2 == 0">
+				+ 1
+			</when>
+			<otherwise>
+				- 1
+			</otherwise>
+		</choose>
+		WHERE COMMENT_SEQ = #{param1}
+	</update>
+	
+	
+	
+	<select id="get_comment_user_id" resultType="String">
+		SELECT USER_ID FROM COMMENT_LIKE WHERE COMMENT_SEQ = #{param1}
+	</select>
+	
+		
+	<select id="get_comment_user_name" resultType="String">
+		SELECT ML.USER_NAME, MC.COMMENT_SEQ
+		FROM MOVIE_COMMENT MC
+		LEFT OUTER JOIN MEMBER_LIST ML
+		ON MC.USER_ID = ML.USER_ID
+		WHERE COMMENT_SEQ = #{param1}
+	</select>
+	
+	<!-- 컨텐츠뷰 그래프 -->
+	<select id="get_star_point_by_movie_code" resultType="int">
+		SELECT COUNT(*) FROM EVAL_MOVIE WHERE MOVIE_CODE = #{param1} AND EVAL_POINT = #{param2}
+	</select>
+	
+	<!-- 개인정보 그래프 -->
+	<select id="get_star_point_by_sessionID" resultType="int">
+		SELECT COUNT(*) FROM EVAL_MOVIE WHERE USER_ID = #{param1} AND EVAL_POINT = #{param2}
+	</select>
+	
+	
+	<select id="get_total_points" resultType="int">
+		SELECT EVAL_POINT FROM EVAL_MOVIE WHERE USER_ID = #{param1}
+	</select>
+	
+	<!-- 내가 남긴 코멘트 가져오기 -->
+	<select id="my_comment_read" resultType="movie.rec.movilex.dto.MovieCommentDto">
+	   SELECT * FROM MOVIE_COMMENT WHERE COMMENT_SEQ=#{param1}
+	</select>
+	
+	<!-- 내가 남긴 코멘트 수정 -->
+	<update id="my_comment_edit">
+	   UPDATE MOVIE_COMMENT SET COMMENT_CONTENT=#{param3} WHERE COMMENT_SEQ=#{param1} AND MOVIE_CODE= #{param2}
+	</update>
+	
+	<!-- 내가 남긴 코멘트 삭제 -->
+	<delete id="my_comment_delete">
+	   DELETE MOVIE_COMMENT WHERE COMMENT_SEQ=#{param1}
+	</delete>
+	
+	
+	
+	
+	<select id="get_my_eval_movie" resultType="movie.rec.movilex.dto.MyEvalMovieDto">
+		SELECT EM.EVAL_POINT, ML.MOVIE_GENRE, ML.MOVIE_ACTOR, ML.MOVIE_NATION
+		FROM EVAL_MOVIE EM 
+		JOIN MOVIE_LIST ML 
+		ON EM.MOVIE_CODE = ML.MOVIE_CODE
+		WHERE USER_ID = #{param1}
+	</select>
+	
+	
+	
+<!-- 	 전체 영화 리스트 
+	<select id="get_movie_list" resultType="movie.rec.movilex.dto.MovieDto">
+		SELECT * FROM MOVIE_LIST
+	</select>
+ -->	
+	<!-- 각 코드별 영화 정보 -->
+	<select id="get_movie_info" resultType="movie.rec.movilex.dto.MovieDto">
+		SELECT * FROM MOVIE_LIST WHERE MOVIE_CODE = #{param1}
+	</select>
+	
+	
+	<!-- 영화 평가 유무 체크 -->
+	<select id="get_eval_check" resultType="int">
+		SELECT COUNT(*) FROM EVAL_MOVIE WHERE USER_ID = #{param1} AND MOVIE_CODE = #{param2}
+	</select>
+	
+	
+	
+	<select id="non_eval_list" resultType="movie.rec.movilex.dto.NonEvalMovieListDto">
+		SELECT ML.MOVIE_CODE, ML.MOVIE_GENRE, ML.MOVIE_ACTOR, ML.MOVIE_NATION 
+		FROM MOVIE_LIST ML
+		LEFT OUTER JOIN EVAL_MOVIE EM
+		ON ML.MOVIE_CODE = EM.MOVIE_CODE AND EM.USER_ID = #{param1}
+		WHERE EM.MOVIE_CODE IS NULL
+	</select>
+	
+	
+	
+	<select id="get_similar_movie" resultType="movie.rec.movilex.dto.MovieDto">
+		SELECT * FROM MOVIE_LIST
+		WHERE MOVIE_CODE 
+		IN 
+		<foreach collection="list" index="index" item="code" open="(" close=")" separator="," >
+			#{code}
+		</foreach>
+		ORDER BY CASE MOVIE_CODE 
+		<foreach collection="list" index="index" item="code">
+			WHEN #{code} THEN #{index}
+		</foreach>
+		END
+	
+	
+	</select>
+	
+	
+	
+	<insert id="movie_imgs_insert">
+		INSERT INTO MOVIE_IMGS VALUES(#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6})
+	</insert>
+	
+	<insert id="movie_info_insert">
+		INSERT INTO MOVIE_LIST VALUES(#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6},
+		#{param7}, #{param8}, #{param9}, #{param10}, #{param11})
+	</insert>
+	
+	<select id="exist_movie_check" resultType="int">
+		SELECT COUNT(*) FROM MOVIE_LIST WHERE MOVIE_CODE = #{param1}
+	</select>
+	
+	
+	<select id="get_pop_search" resultType="movie.rec.movilex.dto.PopularSearchDto">
+		SELECT POP_TITLE, COUNT(*) CNT FROM POP_SEARCH GROUP BY POP_TITLE ORDER BY CNT DESC
+	</select>
+	
+	<insert id="insert_popsearch">
+		INSERT INTO POP_SEARCH VALUES(POP_SEQ_VAL.NEXTVAL, #{param1})
+	</insert>
+	
+	
+	<select id="get_user_name" resultType="String">
+		SELECT USER_NAME FROM MEMBER_LIST WHERE USER_ID LIKE #{param1}
+	</select>
+	
+	
+	<select id="eval_check_count" resultType="int">
+			SELECT COUNT(*) FROM EVAL_MOVIE WHERE USER_ID LIKE #{param1}
+	</select>
+	
+	
+</mapper>

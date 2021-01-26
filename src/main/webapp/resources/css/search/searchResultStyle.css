@@ -1,0 +1,208 @@
+
+button:focus{
+	outline: none;
+}
+
+.fixed_header {
+	display: none;
+}
+
+.search_grid {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.search_result_container {
+    margin: 0;
+    min-height: calc(100vh - 62px);
+}
+
+.round_corner {
+    width: auto;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+
+}
+
+.search_fixed_header {
+    position: fixed;
+    z-index: 1050;
+    width: 100%;
+    background-color: white;
+    margin-left: -15px;
+}
+
+.search_header {
+    position: relative;
+    width: 100%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.header_bar {
+    /*    position: fixed;*/
+    padding: 10px 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    position: relative;
+
+}
+
+.prev_btn {
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 10px;
+    background-size: 15px;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.search_title {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+    margin: 11px 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search_result_movie_section {
+    padding: 10px 0 13px;
+}
+
+.search_result_row{
+    margin: 0 20px;
+    padding-top: 62px;
+}
+
+.search_result_ul{
+    list-style: none;
+    margin: 0 -10px;
+}
+
+.search_result_li:hover{
+	margin: 0 -3px;
+	background-color: #f8f8f8;
+	border-radius: 6px;
+}
+
+.search_result_li{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 2px;
+}
+
+.search_result_li:not(:first-child){
+    margin-top: 20px;
+}
+
+.search_result_li a{
+    color: #000;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.movie_img_block{
+    position: relative;
+}
+
+.movie_img{
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+    width: 80px;
+    height: 120px;
+    margin-right: 15px;
+}
+
+.movie_img img{
+    width: 100%;
+    height: 100%
+}
+
+
+.movie_info_title{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 20px;
+    padding: 30px 0;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.search_result_title{
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 22px;
+    margin-bottom: 2px;
+}
+
+.search_result_spec{
+    margin-top: 10px;
+    color: #8c8c8c;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 19px;
+}
+
+
+
+
+
+/* 반응형 */
+
+@media screen and (min-width :768px) {
+	.fixed_header{
+		display: block;
+	}
+	
+	.search_result_row{
+	    margin: 0 30px;
+	    padding-top: 10px;
+	}
+
+    .search_grid {
+        max-width: 640px;
+    }
+
+    .search_wrap {
+        padding-top: 62px;
+    }
+
+    .search_result_container {
+        padding: 30px 0;
+        background: #f8f8f8;
+    }
+
+    .round_corner {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+    }
+
+    .prev_btn {
+        margin: 10px 0;
+    }
+
+    .search_fixed_header {
+        position: relative;
+        width: auto;
+        margin-left: 0px;
+    }
+
+}

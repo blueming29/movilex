@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="movie.rec.movilex.dao.MovieMemberDao">
+	<!-- 회원가입 -->
+	<insert id="member_insert">
+		INSERT INTO MEMBER_LIST VALUES(#{param3}, #{param2}, #{param1}, SYSDATE)
+	</insert>
+	<!-- 로그인체크 -->
+	<select id="member_check" resultType="int">
+		SELECT COUNT(*) FROM MEMBER_LIST WHERE USER_ID LIKE #{param1} AND USER_PW LIKE #{param2}
+	</select>
+	<!-- 중복확인 -->
+	<select id="email_check" resultType="int">
+		SELECT COUNT(*) FROM MEMBER_LIST WHERE USER_ID LIKE #{param1}
+	</select>
+	
+	<!-- 2차암호 -->
+	<select id="get_user_pw" resultType="String">
+		SELECT USER_PW FROM MEMBER_LIST WHERE USER_ID LIKE #{param1}
+	</select>
+	
+	<update id="update_pw">
+		UPDATE MEMBER_LIST SET USER_PW = #{param2} WHERE USER_ID = #{param1}
+	</update>
+	
+	<select id="get_member_info" resultType="movie.rec.movilex.dto.MemberDto">
+		SELECT * FROM MEMBER_LIST WHERE USER_ID LIKE #{param1}
+	</select>
+	
+	<update id="member_update">
+		UPDATE MEMBER_LIST SET USER_PW = #{param2}, USER_NAME = #{param1} WHERE USER_ID = #{param3}
+	</update>
+	
+	<delete id="user_withdrawal">
+		DELETE FROM MEMBER_LIST WHERE USER_ID LIKE #{param1}
+	</delete>
+</mapper>

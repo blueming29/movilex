@@ -1,0 +1,132 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Noto Sans KR, sans-serif;	
+	font-size: 16px;
+}
+.wrap{
+	width: 100%;
+	height: 100%;
+}
+/* 코멘트 상단_닫기버튼, 영화제목 */
+.dbinsert_header {
+	width: 100%;
+	min-height: 50px;
+	border-bottom: 1px solid #ccc;
+}
+
+/* 닫기버튼 */
+.dbinsert_close_button {
+	position: absolute;
+	background: none;
+	border: 0px;
+	padding: 5px;
+	left: 8px;
+	top: 8px;
+
+}
+
+/* 닫기버튼_글씨 */
+.dbinsert_close {
+	text-decoration: none;
+	color: #007bff;
+	cursor: pointer;
+}
+
+.dbinsert_close i, .dbinsert_close svg {
+	font-size: 22px;
+}
+
+/* 영화제목 */
+.dbinsert_movie_title {
+	min-height: 40px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.btn_area {
+	display: flex;
+	position: relative;
+	width: 100%;	
+	border-bottom: 1px solid #ccc;
+}
+
+.search_code{
+	padding-left: 10px;
+	min-height: 50px;
+}
+
+.search_code input{
+	width: 300px;
+	height: 95%;
+	border: 0;
+}
+
+.search_btn{
+}
+
+.search_btn button{
+	height: 100%;
+	background-color: #fff;
+	color: #ccc;
+	font-size: 20px;
+	border: 0;
+	cursor: pointer;
+}
+
+.dbinsert_body input{
+	margin: 10px 0;
+}
+
+
+.save_button button {
+	display: none;
+	font-weight: 700;
+	background: none;
+	font-size: 20px;
+	color: #007bff;
+	border: 0;
+	cursor: pointer;
+}
+
+/* 영화제목_글자 */
+.dbinsert_movie_title h2 {
+	font-size: 22px;
+}
+
+
+
+
+.dbinsert_content_textarea {
+	margin: 20px 15px 0px;
+	min-height: 200px;
+}
+
+.dbinsert_body{
+	display: block;
+	position: relative;
+	padding: 10px;
+}
+
+.save_button {
+	display: block;
+	position: absolute;
+	right: 10px;
+}
+
+.dbinsert_body input{
+	width: 80%;
+	border: 0;	
+	height: 30px;
+}
+
+.dbinsert_content {
+	width: 100%;
+	min-height: 200px;
+	font-weight: 400;
+	border: 0px;
+	outline: none;
+	margin: 1px 0px;
+	resize: none;
+	overflow: auto;
+}

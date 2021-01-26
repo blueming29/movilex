@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- Layout -->
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="title" value="MOVILEX" />
+		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
+	</definition>
+	
+	<definition name="memberInfo" extends="baseLayout">
+		<put-attribute name="title" value="회원정보" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/memberInfo.jsp" />
+	</definition>
+	
+	<definition name="contentview" extends="baseLayout">
+		<put-attribute name="title" value="영화정보" />
+		<put-attribute name="body" value="/WEB-INF/views/contentview/contentview.jsp" />
+	</definition>
+	
+	<definition name="evalform" extends="baseLayout">
+		<put-attribute name="title" value="평가한 영화" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/evalform.jsp" />
+	</definition>
+	
+	<definition name="likeform" extends="baseLayout">
+		<put-attribute name="title" value="보고싶어요" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/likeform.jsp" />
+	</definition>
+	
+	<definition name="searchform" extends="baseLayout">
+		<put-attribute name="title" value="검색화면" />
+		<put-attribute name="body" value="/WEB-INF/views/search/searchform.jsp" />
+	</definition>
+	
+	<definition name="searchresult" extends="baseLayout">
+		<put-attribute name="title" value="검색결과" />
+		<put-attribute name="body" value="/WEB-INF/views/search/searchresult.jsp" />
+	</definition>
+	
+	<definition name="recommendform" extends="baseLayout">
+		<put-attribute name="title" value="MOVILEX 추천영화" />
+		<put-attribute name="body" value="/WEB-INF/views/memberInfo/recommendform.jsp" />
+	</definition>
+
+	<definition name="noticeview" extends="baseLayout">
+		<put-attribute name="title" value="공지사항" />
+		<put-attribute name="body" value="/WEB-INF/views/noticeBoard/noticeView.jsp" />
+	</definition>
+
+	<definition name="qnaview" extends="baseLayout">
+		<put-attribute name="title" value="문의사항" />
+		<put-attribute name="body" value="/WEB-INF/views/noticeBoard/qnaView.jsp" />
+	</definition>
+
+
+</tiles-definitions>
